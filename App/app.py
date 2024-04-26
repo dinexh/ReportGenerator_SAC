@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import os
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
-from pdf2image import convert_from_path
 
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/static')
 
@@ -78,14 +77,16 @@ def submit_form():
 
     # Generate PDF report
     generate_pdf(club_name, event_name, event_description, attendance, date, time, venue, filename)
+    from flask import jsonify
 
-    return render_template('success.html')
+@app.route('/submit_form', methods=['POST'])
+def submit_form():
+    # Process form data...
+    
+    # Assuming the form submission was successful
+    response_data = {'message': 'Report submitted successfully!'}
+    return jsonify(response_data)
 
-@app.route('/preview')
-def preview():
-    # You can pass the necessary parameters to generate the PDF here
-    # For now, let's just return the preview template
-    return render_template('preview.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

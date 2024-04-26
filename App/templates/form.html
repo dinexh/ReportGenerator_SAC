@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/form.css">
 </head>
 <body>
+    <div id="toast-container"></div>
    <div class="container">
     <div class="container-in">
         <nav>
@@ -40,23 +41,13 @@
                     <input type="file" id="image" name="image"><br><br>
                     
                     <input type="submit" value="Submit">
-                    <a href="{{ url_for('preview') }}">Preview PDF</a>
                 </form>    
             </div>
             <div class="main-section-two">
-                <h2>PDF Preview</h2>
-                <div id="pdf-preview"></div>
+                <h2>PDF Preview</h2>    
             </div>
         </div>
     </div>
    </div>
-   <script>
-    // Load the PDF preview
-    const pdfPreview = document.getElementById('pdf-preview');
-    const pdfUrl = '{{ url_for("static", filename="report.pdf") }}'; // Replace with the path to your generated PDF
-    const img = document.createElement('img');
-    img.src = `/path/to/preview.jpg`; // Replace with the path to your rendered preview image
-    pdfPreview.appendChild(img);
-</script>
 </body>
 </html>
