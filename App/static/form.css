@@ -4,10 +4,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* font-size: 10rem; */
 }
 .container {
     width: 100%;
-    /* padding: 0.5rem; */
+
     display: flex;
     justify-content: center;
     align-content: center;
@@ -34,7 +35,6 @@ nav{
     display: flex; 
     justify-content: center;
      align-items: center;
-     /* margin-top: 4rem; */
 }
 .main-section-one{
     width: 100%;
@@ -42,6 +42,7 @@ nav{
     display: flex; 
     justify-content: center;
      align-items: center;
+     /* font-size: 10rem; */
      /* margin-top: 4rem; */
 }
 .main-section-two{
@@ -57,17 +58,13 @@ nav{
     height: 100%;
 
 }
-/* form {
-    max-width: 500px;
-    margin: auto;
-} */
+
 form {
     width: 80%;
     padding: 2rem;
     border: 1px solid #c3c3c3;
     border-radius: 5px;
     background-color: #f2f2f2;
-    /* padding: 20px; */
 }
 
 label {
@@ -76,32 +73,19 @@ label {
 }
 input[type="text"],
 input[type="number"] {
-    padding: 10px;
-    margin-bottom: 20px;
+    /* padding: 10px; */
+    padding: 0.7rem;
+    /* margin-bottom: 20px; */
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     width: 50%;
 }
-
 input[type="submit"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    width: 50%;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 10px;
+    background-color: rgb(151, 0, 3);
+    color: white;
+    padding: 1rem;
+    width: 30%;
+    border-radius: 10px;
+    font-size: 1rem;
 }

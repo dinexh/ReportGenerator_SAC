@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Preview</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+</head>
+<body>
+    <h1>PDF Preview</h1>
+    <div id="pdf-preview"></div>
+    <script>
+        // Load the PDF document
+        const pdfUrl = '{{ url_for("static", filename="report.pdf") }}'; // Replace with the actual path to your generated PDF
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+        
+        loadingTask.promise.then(function(pdf) {
+            // Fetch the first page
+            pdf.getPage(1).then(function(page) {
+                const scale = 1.5;
+                const viewport = page.getViewport({ scale: scale });
+                
+                // Prepare canvas using PDF page dimensions
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                // Render PDF page into canvas context
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                const renderTask = page.render(renderContext);
+                renderTask.promise.then(function() {
+                    // Display canvas on the page
+                    const pdfPreview = document.getElementById('pdf-preview');
+                    pdfPreview.appendChild(canvas);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
