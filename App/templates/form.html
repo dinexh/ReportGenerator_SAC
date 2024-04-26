@@ -16,28 +16,28 @@
             <div class="main-section-one">
                 <form action="/submit_form" method="post" enctype="multipart/form-data">
                     <label for="club_name">Club Name:</label>
-                    <input type="text" id="club_name" name="club_name"><br><br>
+                    <input type="text" id="club_name" name="club_name" required ><br><br>
                     
                     <label for="event_name">Event Name:</label>
-                    <input type="text" id="event_name" name="event_name"><br><br>
+                    <input type="text" id="event_name" name="event_name required "><br><br>
                     
                     <label for="event_name">Event Description:</label>
-                    <input type="text" id="event_description" name="event_description"><br><br>
+                    <input type="text" id="event_description" name="event_description" required ><br><br>
 
                     <label for="attendance">Total No of Attended:</label>
-                    <input type="number" id="attendance" name="attendance"><br><br>
+                    <input type="number" id="attendance" name="attendance" required ><br><br>
                     
                     <label for="date">Date:</label>
-                    <input type="date" id="date" name="date"><br><br>
+                    <input type="date" id="date" name="date" required ><br><br>
 
                     <label for="time">Time:</label>
-                    <input type="time" id="time" name="time"><br><br>
+                    <input type="time" id="time" name="time"required ><br><br>
 
                     <label for="venue">Venue:</label>
-                    <input type="text" id="venue" name="venue"><br><br>
+                    <input type="text" id="venue" name="venue" required ><br><br>
                     
                     <label for="image">Image:</label>
-                    <input type="file" id="image" name="image"><br><br>
+                    <input type="file" id="image" name="image" required ><br><br>
                     <input type="submit" value="Submit">
                 </form>    
             </div>
@@ -50,18 +50,5 @@
         </footer>
     </div>
    </div>
-   <script>
-    // JavaScript to handle form submission and show alert if no image is uploaded
-document.getElementById('report-form').addEventListener('submit', function(event) {
-    // Check if an image has been uploaded
-    var imageInput = document.getElementById('image');
-    if (imageInput.files.length === 0) {
-        // Prevent the default form submission
-        event.preventDefault();
-        // Show alert
-        alert("Please upload an image.");
-    }
-});
-</script>
 </body>
 </html>
