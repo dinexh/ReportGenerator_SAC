@@ -77,16 +77,10 @@ def submit_form():
 
     # Generate PDF report
     generate_pdf(club_name, event_name, event_description, attendance, date, time, venue, filename)
-    from flask import jsonify
-
-@app.route('/submit_form', methods=['POST'])
-def submit_form():
-    # Process form data...
     
     # Assuming the form submission was successful
     response_data = {'message': 'Report submitted successfully!'}
     return jsonify(response_data)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

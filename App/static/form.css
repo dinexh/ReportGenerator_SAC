@@ -4,11 +4,9 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* font-size: 10rem; */
 }
 .container {
     width: 100%;
-
     display: flex;
     justify-content: center;
     align-content: center;
@@ -25,7 +23,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.8rem;
     background-color: rgb(151, 0, 3);
     color: white;
 }
@@ -38,16 +36,14 @@ nav{
 }
 .main-section-one{
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     display: flex; 
     justify-content: center;
      align-items: center;
-     /* font-size: 10rem; */
-     /* margin-top: 4rem; */
 }
 .main-section-two{
     width: 100%;
-    padding: 1rem;
+    /* padding: 1rem; */
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -66,7 +62,7 @@ form #time {
 }
 form {
     width: 80%;
-    padding: 2rem;
+    padding: 1rem;
     border: 1px solid #c3c3c3;
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -93,4 +89,11 @@ input[type="submit"] {
     width: 30%;
     border-radius: 10px;
     font-size: 1rem;
+}
+footer{
+    width: 100%;
+    padding: 0.8rem;
+    background-color: rgb(151, 0, 3);
+    color: white;
+    text-align: center;
 }
