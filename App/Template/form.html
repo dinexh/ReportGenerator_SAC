@@ -4,29 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity Report Form</title>
-    <style>
-        /* CSS styles */
-    </style>
+    <link rel="stylesheet" href="/static/form.css">
 </head>
 <body>
-    <h1>Activity Report Form</h1>
-    <form action="/submit_form" method="post" enctype="multipart/form-data">
-        <label for="club_name">Club Name:</label>
-        <input type="text" id="club_name" name="club_name"><br><br>
-        
-        <label for="event_name">Event Name:</label>
-        <input type="text" id="event_name" name="event_name"><br><br>
-        
-        <label for="attendance">Attendance:</label>
-        <input type="number" id="attendance" name="attendance"><br><br>
-        
-        <label for="budget_spent">Budget Spent:</label>
-        <input type="number" id="budget_spent" name="budget_spent"><br><br>
-        
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image"><br><br>
-        
-        <input type="submit" value="Submit">
-    </form>¸¸    
+   <div class="container">
+    <div class="container-in">
+        <nav>
+            <h1>Activity Report Form | Student Activity Center</h1>
+        </nav>
+        <div class="main-section">
+            <div class="main-section-one">
+                <form action="/submit_form" method="post" enctype="multipart/form-data">
+                    <label for="club_name">Club Name:</label>
+                    <input type="text" id="club_name" name="club_name"><br><br>
+                    
+                    <label for="event_name">Event Name:</label>
+                    <input type="text" id="event_name" name="event_name"><br><br>
+                    
+                    <label for="event_name">Event Description:</label>
+                    <input type="text" id="event_description" name="event_description"><br><br>
+
+                    <label for="attendance">Total No of Attended:</label>
+                    <input type="number" id="attendance" name="attendance"><br><br>
+                    
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date"><br><br>
+
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time"><br><br>
+
+                    <label for="venue">Venue:</label>
+                    <input type="text" id="venue" name="venue"><br><br>
+                    
+                    <label for="image">Image:</label>
+                    <input type="file" id="image" name="image"><br><br>
+                    
+                    <input type="submit" value="Submit">
+                </form>    
+            </div>
+            <div class="main-section-two">
+                <img src="/assets/photo_2024-04-26 12.41.57.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+   </div>
 </body>
 </html>

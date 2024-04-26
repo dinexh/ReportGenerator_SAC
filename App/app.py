@@ -3,7 +3,7 @@ import os
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
-app = Flask(__name__, template_folder='Template')
+app = Flask(__name__, template_folder='Template', static_folder='assets')
 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -54,10 +54,12 @@ def submit_form():
 
     # Handle file upload
     file = request.files['image']
-    if file:
+    if file and file.filename != '':
         filename = file.filename
         print("Image filename:", filename)  # Add this line to print the filename
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    else:
+        filename = None
 
     # Generate PDF report
     generate_pdf(club_name, event_name, attendance, budget_spent, filename)
