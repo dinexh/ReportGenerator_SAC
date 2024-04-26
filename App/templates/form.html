@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/static/form.css">
 </head>
 <body>
-    <div id="toast-container"></div>
    <div class="container">
     <div class="container-in">
         <nav>
@@ -39,7 +38,6 @@
                     
                     <label for="image">Image:</label>
                     <input type="file" id="image" name="image"><br><br>
-                    
                     <input type="submit" value="Submit">
                 </form>    
             </div>
@@ -52,5 +50,18 @@
         </footer>
     </div>
    </div>
+   <script>
+    // JavaScript to handle form submission and show alert if no image is uploaded
+document.getElementById('report-form').addEventListener('submit', function(event) {
+    // Check if an image has been uploaded
+    var imageInput = document.getElementById('image');
+    if (imageInput.files.length === 0) {
+        // Prevent the default form submission
+        event.preventDefault();
+        // Show alert
+        alert("Please upload an image.");
+    }
+});
+</script>
 </body>
 </html>

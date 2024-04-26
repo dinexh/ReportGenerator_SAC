@@ -15,31 +15,35 @@ def ensure_upload_dir_exists():
 def generate_pdf(club_name, event_name, event_description, attendance, date, time, venue, image_filename):
     # Get the absolute path to the current directory
     current_directory = os.getcwd()
-    
-    # Construct the absolute path to the image file
-    image_path = os.path.join(current_directory, UPLOAD_FOLDER, image_filename)
-    
-    # Print the absolute path
-    print("Expected image path:", image_path)
-    
-    # Check if the image file exists
-    if not os.path.exists(image_path):
-        print("Error: Image file does not exist at the expected path.")
-        return
-    
-    # Now you can proceed to generate the PDF with the image
-    
-    c = canvas.Canvas('report.pdf', pagesize=letter)
-    c.drawString(100, 750, f'Club Name: {club_name}')
-    c.drawString(100, 730, f'Event Name: {event_name}')
-    c.drawString(100, 710, f'Event Description: {event_description}')
-    c.drawString(100, 690, f'Attendance: {attendance}')
-    c.drawString(100, 670, f'Date: {date}')
-    c.drawString(100, 650, f'Time: {time}')
-    c.drawString(100, 630, f'Venue: {venue}')
-    if image_filename is not None:
+
+    # Check if an image file is uploaded
+    if image_filename:
+        # Construct the absolute path to the image file
+        image_path = os.path.join(current_directory, UPLOAD_FOLDER, image_filename)
+        
+        # Print the absolute path
+        print("Expected image path:", image_path)
+        
+        # Check if the image file exists
+        if not os.path.exists(image_path):
+            print("Error: Image file does not exist at the expected path.")
+            return
+        
+        # Now you can proceed to generate the PDF with the image
+        
+        c = canvas.Canvas('report.pdf', pagesize=letter)
+        c.drawString(100, 750, f'Club Name: {club_name}')
+        c.drawString(100, 730, f'Event Name: {event_name}')
+        c.drawString(100, 710, f'Event Description: {event_description}')
+        c.drawString(100, 690, f'Attendance: {attendance}')
+        c.drawString(100, 670, f'Date: {date}')
+        c.drawString(100, 650, f'Time: {time}')
+        c.drawString(100, 630, f'Venue: {venue}')
         c.drawImage(image_path, 100, 500, width=200, height=200)
-    c.save()
+        c.save()
+    else:
+        # Handle the case where no image file is uploaded
+        print("Error: No image file uploaded.")
 
 @app.route('/')
 def index():
@@ -77,10 +81,11 @@ def submit_form():
 
     # Generate PDF report
     generate_pdf(club_name, event_name, event_description, attendance, date, time, venue, filename)
-    
+
     # Assuming the form submission was successful
     response_data = {'message': 'Report submitted successfully!'}
     return jsonify(response_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
