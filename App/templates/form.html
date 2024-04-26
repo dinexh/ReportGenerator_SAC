@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity Report Form</title>
     <link rel="stylesheet" href="/static/form.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
    <div class="container">
@@ -14,14 +15,14 @@
         </nav>
         <div class="main-section">
             <div class="main-section-one">
-                <form action="/submit_form" method="post" enctype="multipart/form-data">
+                <form id="activity-form" enctype="multipart/form-data">
                     <label for="club_name">Club Name:</label>
                     <input type="text" id="club_name" name="club_name" required ><br><br>
                     
                     <label for="event_name">Event Name:</label>
-                    <input type="text" id="event_name" name="event_name required "><br><br>
+                    <input type="text" id="event_name" name="event_name" required ><br><br>
                     
-                    <label for="event_name">Event Description:</label>
+                    <label for="event_description">Event Description:</label>
                     <input type="text" id="event_description" name="event_description" required ><br><br>
 
                     <label for="attendance">Total No of Attended:</label>
@@ -50,5 +51,43 @@
         </footer>
     </div>
    </div>
+
+   <script>
+    $(document).ready(function() {
+        $('#activity-form').submit(function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Serialize form data
+            var formData = new FormData($(this)[0]);
+
+            // Submit form data via AJAX
+            $.ajax({
+                type: 'POST',
+                url: '/submit_form',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    // Display toast message
+                    var toast = document.createElement('div');
+                    toast.classList.add('toast');
+                    toast.innerText = response.message;
+                    document.body.appendChild(toast);
+
+                    // Remove toast after 3 seconds
+                    setTimeout(function() {
+                        toast.style.opacity = '0';
+                        setTimeout(function() {
+                            document.body.removeChild(toast);
+                        }, 1000);
+                    }, 3000);
+
+                    // Trigger download of the generated report
+                    window.location.href = '/download_report';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

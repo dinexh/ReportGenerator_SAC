@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 import os
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -86,6 +86,10 @@ def submit_form():
     response_data = {'message': 'Report submitted successfully!'}
     return jsonify(response_data)
 
+@app.route('/download_report', methods=['GET'])
+def download_report():
+    report_path = 'report.pdf'  # Assuming the report file is named 'report.pdf'
+    return send_file(report_path, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
