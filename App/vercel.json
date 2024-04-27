@@ -9,7 +9,7 @@
     "routes": [
       {
         "src": "/static/(.*)",
-        "dest": "@vercel/pyhon"
+        "dest": "@vercel/python"
       },
       {
         "src": "/(.*)",
