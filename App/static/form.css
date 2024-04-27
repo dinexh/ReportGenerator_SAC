@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 .toast {
+    /* background-color: red; */
     position: fixed;
     bottom: 20px;
     left: 50%;
