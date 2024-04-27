@@ -36,7 +36,7 @@ def generate_pdf(club_name, event_name, event_description, attendance, date, tim
 
 @app.route('/')
 def index():
-    return render_template('form.html')
+    return render_template('index.html')
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
