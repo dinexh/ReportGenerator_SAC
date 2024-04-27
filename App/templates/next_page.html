@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity Report</title>
+    <link rel="stylesheet" href="/static/next_page.css">
 </head>
 <body>
    <div class="container">
@@ -14,9 +15,11 @@
         <div class="main-section">
             <div class="main-section-one">
                 <!-- Display the report here -->
-                <iframe src="{{ url_for('preview_report') }}" width="100%" height="500px"></iframe>
+                <iframe id="pdf" src="{{ url_for('preview_report') }}" width="100%" height="500px"></iframe>
                 <br>
-                <a href="{{ url_for('download_report') }}" download><button>Download Report</button></a>
+                <div class="button_class">
+                    <a href="{{ url_for('download_report') }}" download><button>Download Report</button></a>
+                </div>
             </div>
         </div>
         <footer>
