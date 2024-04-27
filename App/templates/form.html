@@ -39,12 +39,10 @@
                     
                     <label for="image">Image:</label>
                     <input type="file" id="image" name="image" required ><br><br>
-                    <input type="button" id="preview-btn" value="Preview">
-                    <input type="submit" value="Submit">
+                    <a href="./next_page.html">
+                        <input type="button" id="preview-btn" value="Preview">
+                    </a>
                 </form>    
-            </div>
-            <div class="main-section-two">
-                <iframe id="pdf-preview" src="" frameborder="0"></iframe>
             </div>
         </div>
         <footer>
@@ -102,6 +100,11 @@
 
         // Call the function to update PDF preview when the page loads
         updatePdfPreview();
+
+        // Preview button click event handler
+        $('#preview-btn').click(function() {
+            updatePdfPreview();
+        });
     });
 </script>
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Report</title>
+</head>
+<body>
+   <div class="container">
+    <div class="container-in">
+        <nav>
+            <h1>Activity Report</h1>
+        </nav>
+        <div class="main-section">
+            <div class="main-section-one">
+                <!-- Display the report here -->
+                <iframe src="{{ url_for('preview_report') }}" width="100%" height="500px"></iframe>
+                <br>
+                <a href="{{ url_for('download_report') }}" download><button>Download Report</button></a>
+            </div>
+        </div>
+        <footer>
+            <p>Designed and Developed by Dinesh Korukonda <br> ZeroOne Code Club</p>
+        </footer>
+    </div>
+   </div>
+</body>
+</html>
