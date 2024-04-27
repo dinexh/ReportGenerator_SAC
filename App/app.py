@@ -5,6 +5,7 @@ from reportlab.pdfgen import canvas
 
 app = Flask(__name__, template_folder='templates', static_folder='static', static_url_path='/static')
 
+
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
