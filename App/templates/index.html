@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity Report Form</title>
-    <link rel="stylesheet" href="/static/form.css">
+    <link rel="stylesheet" href="/static/index.css"> <!-- Link to form.css -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
@@ -88,21 +88,7 @@
                 }
             });
         });
-
-        // Function to update PDF preview
-        function updatePdfPreview() {
-            // Get the PDF file path from the server
-            $.get('/pdf_path', function(response) {
-                // Update the src attribute of the iframe to display the PDF
-                $('#pdf-preview').attr('src', response.pdf_path);
-            });
-        }
-
-        // Call the function to update PDF preview when the page loads
-        updatePdfPreview();
     });
 </script>
-
-
 </body>
 </html>
