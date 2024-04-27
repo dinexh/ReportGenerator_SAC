@@ -39,11 +39,12 @@
                     
                     <label for="image">Image:</label>
                     <input type="file" id="image" name="image" required ><br><br>
+                    <input type="button" id="preview-btn" value="Preview">
                     <input type="submit" value="Submit">
                 </form>    
             </div>
             <div class="main-section-two">
-                <h2>PDF Preview</h2>    
+                <iframe id="pdf-preview" src="" frameborder="0"></iframe>
             </div>
         </div>
         <footer>
@@ -51,8 +52,7 @@
         </footer>
     </div>
    </div>
-
-   <script>
+<script>
     $(document).ready(function() {
         $('#activity-form').submit(function(event) {
             event.preventDefault(); // Prevent default form submission
@@ -82,12 +82,28 @@
                         }, 1000);
                     }, 3000);
 
+                    // Update PDF preview after successful form submission
+                    updatePdfPreview();
+
                     // Trigger download of the generated report
                     window.location.href = '/download_report';
                 }
             });
         });
+
+        // Function to update PDF preview
+        function updatePdfPreview() {
+            // Get the PDF file path from the server
+            $.get('/pdf_path', function(response) {
+                // Update the src attribute of the iframe to display the PDF
+                $('#pdf-preview').attr('src', response.pdf_path);
+            });
+        }
+
+        // Call the function to update PDF preview when the page loads
+        updatePdfPreview();
     });
 </script>
+
 </body>
 </html>

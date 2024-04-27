@@ -13,23 +13,13 @@ def ensure_upload_dir_exists():
         os.makedirs(app.config['UPLOAD_FOLDER'])
 
 def generate_pdf(club_name, event_name, event_description, attendance, date, time, venue, image_filename):
-    # Get the absolute path to the current directory
     current_directory = os.getcwd()
 
-    # Check if an image file is uploaded
     if image_filename:
-        # Construct the absolute path to the image file
         image_path = os.path.join(current_directory, UPLOAD_FOLDER, image_filename)
-        
-        # Print the absolute path
-        print("Expected image path:", image_path)
-        
-        # Check if the image file exists
         if not os.path.exists(image_path):
             print("Error: Image file does not exist at the expected path.")
             return
-        
-        # Now you can proceed to generate the PDF with the image
         
         c = canvas.Canvas('report.pdf', pagesize=letter)
         c.drawString(100, 750, f'Club Name: {club_name}')
@@ -42,7 +32,6 @@ def generate_pdf(club_name, event_name, event_description, attendance, date, tim
         c.drawImage(image_path, 100, 500, width=200, height=200)
         c.save()
     else:
-        # Handle the case where no image file is uploaded
         print("Error: No image file uploaded.")
 
 @app.route('/')
@@ -54,42 +43,41 @@ def submit_form():
     club_name = request.form['club_name']
     event_name = request.form['event_name']
     event_description = request.form['event_description']
-    attendance_str = request.form['attendance']  # Get the attendance value as string
+    attendance_str = request.form['attendance']
     date = request.form['date']
     time = request.form['time']
     venue = request.form['venue']
 
-    # Ensure the 'uploads' directory exists
     ensure_upload_dir_exists()
 
-    # Handle file upload
     file = request.files['image']
     if file and file.filename != '':
         filename = file.filename
-        print("Image filename:", filename)  # Add this line to print the filename
+        print("Image filename:", filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     else:
         filename = None
 
     try:
-        # Convert attendance string to integer, provide default value if empty
         attendance = int(attendance_str) if attendance_str else 0
     except ValueError:
-        # Handle the case where the attendance value is not a valid integer
         print("Invalid value for attendance, setting it to 0")
         attendance = 0
 
-    # Generate PDF report
     generate_pdf(club_name, event_name, event_description, attendance, date, time, venue, filename)
 
-    # Assuming the form submission was successful
     response_data = {'message': 'Report submitted successfully!'}
     return jsonify(response_data)
 
 @app.route('/download_report', methods=['GET'])
 def download_report():
-    report_path = 'report.pdf'  # Assuming the report file is named 'report.pdf'
+    report_path = 'report.pdf'
     return send_file(report_path, as_attachment=True)
+
+@app.route('/preview_report', methods=['GET'])
+def preview_report():
+    report_path = 'report.pdf'
+    return send_file(report_path, mimetype='application/pdf')
 
 if __name__ == '__main__':
     app.run(debug=True)
