@@ -50,8 +50,14 @@
         </footer>
     </div>
    </div>
-<script>
+   <script>
     $(document).ready(function() {
+        // Function to handle click event of the preview button
+        $('#preview-btn').click(function() {
+            // Redirect to the next page for preview
+            window.location.href = '/next_page.html';
+        });
+
         $('#activity-form').submit(function(event) {
             event.preventDefault(); // Prevent default form submission
 
@@ -80,9 +86,6 @@
                         }, 1000);
                     }, 3000);
 
-                    // Update PDF preview after successful form submission
-                    updatePdfPreview();
-
                     // Trigger download of the generated report
                     window.location.href = '/download_report';
                 }
@@ -100,13 +103,9 @@
 
         // Call the function to update PDF preview when the page loads
         updatePdfPreview();
-
-        // Preview button click event handler
-        $('#preview-btn').click(function() {
-            updatePdfPreview();
-        });
     });
 </script>
+
 
 </body>
 </html>

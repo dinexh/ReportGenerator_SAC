@@ -79,5 +79,10 @@ def preview_report():
     report_path = 'report.pdf'
     return send_file(report_path, mimetype='application/pdf')
 
+@app.route('/next_page.html')
+def next_page():
+    return render_template('next_page.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
